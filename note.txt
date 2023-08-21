@@ -1,0 +1,35 @@
+Create React App
+----------------
+npx create-react-app <project-name>
+
+Types of Component 
+-------------------
+- Class Based Component
+- Functional Component
+
+Functional Component
+--------------------
+- Only return one root component
+- Can’t return two or more components
+- Put all components in <div></div> to return two or more components
+- Every tag needs a close tag. Example <input></input> or <input />
+
+- To write JS code in functional component use { }
+
+Styling
+-------
+- Inline
+- CSS module
+- 3rd Party Library
+
+JSX => Javascript XML => JSX allows us to write HTML in React
+
+Inline
+------
+- To write Inline style in JSX use style={{}}, 
+- HTML Use {{ property: value }}. Unlike HTML, JSX works as Javascript Object {{ key : value }}
+- Example: background-color: blue; in CSS equal to backgroundColor : "blue",
+
+CSS Module (External CSS)
+-------------------------
+- Write normal CSS and import to file
