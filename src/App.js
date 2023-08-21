@@ -1,11 +1,42 @@
 import React from "react";
 import User from "./components/users/User";
 function App() {
-  let image = "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg"
+  let users = [
+    {
+      id: 1,
+      image: "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg",
+      phone: "09123123123",
+      cell: "096060606060",
+      name: "Mg Mg"
+    },
+    {
+      id: 2,
+      image: "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg",
+      phone: "09321321321",
+      cell: "097070707070",
+      name: "Ag Ag"
+    },
+    {
+      id: 3,
+      image: "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg",
+      phone: "09213213213",
+      cell: "098080808080",
+      name: "Kg Kg"
+    }
+  ]
   return (    
     <div className="container my-5">
-      <User image={image} phone="09123123123" cell="096060606060" />
-      <User image={image} phone="09321321321" cell="097070707070" />
+      {/* First Way
+      <User image={users[0].image} phone={users[0].phone} cell={users[0].cell} name={users[0].name} />
+      <User image={users[1].image} phone={users[1].phone} cell={users[1].cell} name={users[1].name} /> */}
+
+      {/* Second Way
+      <User data={users[0]} /> */}
+
+      {/* Third Way */}
+      {
+        users.map(usr => <User key={usr.id} data={usr} />)
+      }
     </div>
   )
 }

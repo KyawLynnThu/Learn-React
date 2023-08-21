@@ -1,17 +1,20 @@
 import React from "react";
 
-function User({image, phone, cell}) {
+function User({data}) {
     return (
         <div className="card mb-2">
             <div className="row">
                 <div className="col-3">
-                    <img src={image} alt="react" width="50px" height="50px" />
+                    <img src={data.image} alt="react" width="50px" height="50px" />
                 </div>
                 <div className="col-5">
-                    <strong>Ph: {phone}</strong><br />
-                    <strong>Cell: {cell}</strong>
+                    <strong>Phone: {data.phone}</strong><br />
+                    <strong>Cell: {data.cell}</strong>
                 </div>
-                <div className="col-4">
+                <div className="col-3">
+                    <h5 className="mt-2">{data.name}</h5>
+                </div>
+                <div className="col-1">
                     <button className="btn btn-danger btn-sm mt-2">
                         <i className="fa fa-trash"></i>
                     </button>
