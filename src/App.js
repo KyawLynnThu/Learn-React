@@ -1,27 +1,13 @@
-import HeyNow from "./components/HeyNow";
-
+import React from "react";
+import User from "./components/users/User";
 function App() {
-  return (
-    <div>
-      { 
-        [0,1,2,3,4,5,6,7,8,9].map(digit=> <HeyNow key={digit} />)
-        // same form
-        // [0,1,2,3,4,5,6,7,8,9].map((ele) => <HeyNow key={ele}></HeyNow>) 
-      }
+  let image = "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg"
+  return (    
+    <div className="container my-5">
+      <User image={image} phone="09123123123" cell="096060606060" />
+      <User image={image} phone="09321321321" cell="097070707070" />
     </div>
   )
 }
-
-// JSX => Javascript XML => HTML => XML
-// Types of Component 
-
-// Class Component
-
-// Functional Component
-
-//  Only return one root component
-// Can’t return two or more components
-// Put all components in <div></div> to return two or more components
-// Every tag needs a close tag. Example <input></input> or <input />
 
 export default App;
