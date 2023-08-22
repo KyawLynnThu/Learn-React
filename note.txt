@@ -73,7 +73,7 @@ Passing Obejct to Child Dynamically
             <img src={data.image} alt="react" width="50px" height="50px" />
         }
 
-State
+useState
 -----
 - import { useState } from "react";
 - const [ state, setState ] = useState(initialState);
@@ -82,4 +82,18 @@ State
     - In this example, the count state variable holds a number. Clicking the button increments it.
     - let [ count, setCount ] = useState(0); // [ variable, method to change variable's value ]= defaultValue
     - <button onClick={()=> { setCount(++count); }}>Change</button>
+
+useEffect
+---------
+- import { useEffect } from "react";
+- Call useEffect at the top level of your component to declare an Effect
+- An Effect lets you keep your component synchronized with some external system
+- External system means any piece of code that’s not controlled by React
+
+  useEffect(() => {
+    fetch("https://randomuser.me/api/?results=10")
+    .then(res => res.json())
+    .then(users => console.log(users))
+    .catch(err => console.log(err))
+  }, [])
 

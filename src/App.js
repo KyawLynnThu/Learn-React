@@ -1,52 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import User from "./components/users/User";
+
 function App() {
-  let users = [
-    {
-      id: 1,
-      image: "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg",
-      phone: "09123123123",
-      cell: "096060606060",
-      name: "Mg Mg"
-    },
-    {
-      id: 2,
-      image: "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg",
-      phone: "09321321321",
-      cell: "097070707070",
-      name: "Ag Ag"
-    },
-    {
-      id: 3,
-      image: "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small/user-profile-icon-free-vector.jpg",
-      phone: "09213213213",
-      cell: "098080808080",
-      name: "Kg Kg"
-    }
-  ];
-
-  let [count, setCount] = useState(users.length); // [ variable, method to change variable's value ]= defaultValue
-
+  let [ users, setUsers ] = useState([]);
+  useEffect(() => {
+    fetch("https://randomuser.me/api/?results=10")
+    .then(res => res.json())
+    .then(users => {
+      let rawUsers = users.results;
+      let filteredUsers = rawUsers.map(usr => {
+        return {
+          uuid: usr.login.uuid,
+          name: `${usr.name.title} ${usr.name.first} ${usr.name.last}`,
+          phone: usr.phone,
+          cell: usr.cell,
+          image: usr.picture.thumbnail
+        }
+      })
+      setUsers(filteredUsers)
+    })
+    .catch(err => console.log(err))
+  }, [])
   return (
     <div className="container my-5">
       <div>
-        <h1>{count}</h1>
+        <h1 className="text-center my-5 text-info">Our Employee</h1>
+        {
+          users.map(usr => <User key={usr.uuid} data={usr}/>)
+        }
       </div>
-      {/* First Way
-      <User image={users[0].image} phone={users[0].phone} cell={users[0].cell} name={users[0].name} />
-      <User image={users[1].image} phone={users[1].phone} cell={users[1].cell} name={users[1].name} /> */}
-
-      {/* Second Way
-      <User data={users[0]} /> */}
-
-      <button className="btn btn-info btn-sm my-5" onClick={() => {
-        setCount(++count);
-      }}>Change</button>
-
-      {/* Third Way */}
-      {
-        users.map(usr => <User key={usr.id} data={usr} />)
-      }
     </div>
   )
 }
