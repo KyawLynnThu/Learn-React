@@ -33,3 +33,53 @@ Inline
 CSS Module (External CSS)
 -------------------------
 - Write normal CSS and import to file
+
+Passing props to Child
+----------------------
+- Create two components, App.js & User.js
+- In App.js, pass data like this.
+    <User image={image} phone="09123123123" cell="096060606060" />
+- In User.js, use function User(props) or User({image,phone,cell}) and get Data from other component using {props.image} or {image}
+    <img src={image} alt="react" width="50px" height="50px" />
+                            (or)
+    <img src={props.image} alt="react" width="50px" height="50px" />
+
+Passing Obejct to Child Dynamically
+-----------------------------------
+- Create an users array of objects in App.js, each objects contains [{ id, image, phone, cell, name }, {}, ...]
+- 1st way:
+    - Pass Data :
+        <User image={users[0].image} phone={users[0].phone} cell={users[0].cell} name={users[0].name} />
+    - Get Data :
+        function User({ image, phone, cell }) {
+            <img src={image} alt="react" width="50px" height="50px" />
+        }
+    
+- 2nd way:
+    - Pass Data :
+        <User data={users[0]} />
+    - Get Data:
+        function User(props) {
+            <img src={props.data.image} alt="react" width="50px" height="50px" />
+        }
+
+- 3rd way:
+    - Pass Data :
+        {
+            users.map(usr => <User key={usr.id} data={usr} />)
+        }
+    - Get Data :
+        function User({data}) {
+            <img src={data.image} alt="react" width="50px" height="50px" />
+        }
+
+State
+-----
+- import { useState } from "react";
+- const [ state, setState ] = useState(initialState);
+
+- Example :
+    - In this example, the count state variable holds a number. Clicking the button increments it.
+    - let [ count, setCount ] = useState(0); // [ variable, method to change variable's value ]= defaultValue
+    - <button onClick={()=> { setCount(++count); }}>Change</button>
+
