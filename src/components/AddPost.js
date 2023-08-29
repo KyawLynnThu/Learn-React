@@ -37,7 +37,9 @@ class AddPost extends Component {
     }
 }
 
-export default (props) => {
+const WrappedAddPost = (props) => {
     const navigator = useNavigate();
     return <AddPost {...props} navigate={navigator} />
 }
+
+export default WrappedAddPost;

@@ -23,7 +23,9 @@ class PostDetail extends Component {
     }
 }
 
-export default (props) => {
+const WrappedPostDetail = (props) => {
     const state = useLocation();
     return <PostDetail {...props} state={state} />
 };
+
+export default WrappedPostDetail;
