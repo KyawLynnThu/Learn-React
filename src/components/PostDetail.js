@@ -7,10 +7,11 @@ class PostDetail extends Component {
         return(
             <div>
                 <Link to="/" >
-                    <button className="btn btn-sm btn-primary">
+                    <button className="btn btn-sm btn-primary float-end">
                         <i className="fa fa-arrow-left"></i>
                     </button>
                 </Link>
+                <br /><br />
                 <div className="card">
                     <img className="card-img-top" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="userimage" />
                     <div className="card-body">
