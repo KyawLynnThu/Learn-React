@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 class PostCard extends Component {
     delete() {
         this.props.remove(this.props.post.id)
     }
 
     render() {
+        let post = this.props.post;
         return(
             <div className="card">
                 <div className="row px-2">
@@ -13,13 +14,15 @@ class PostCard extends Component {
                         <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="50px" height="50px" alt="" />
                     </div>
                     <div className="col-5 mt-2">
-                        <h4>{this.props.post.title}</h4>
-                        <p>{this.props.post.desc}</p>
+                        <h4>{post.title}</h4>
+                        <p>{post.desc}</p>
                     </div>
                     <div className="col-5 mt-3">
-                        <button className="btn btn-sm btn-info me-1">
-                            <i className="fa fa-eye"></i>
-                        </button>
+                        <Link to={`/post/${post.id}`} state={{post:post}}>
+                            <button className="btn btn-sm btn-info me-1">
+                                <i className="fa fa-eye"></i>
+                            </button>
+                        </Link>
                         <button className="btn btn-sm btn-warning me-1">
                             <i className="fa fa-edit"></i>
                         </button>

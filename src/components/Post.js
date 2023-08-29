@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PostCard from "./PostCard";
+import { Link } from "react-router-dom";
 
 class Post extends Component {
     remove(id) {
@@ -9,6 +10,9 @@ class Post extends Component {
     render() {
         return(
             <div>
+                <Link to="/add">
+                    <button className="btn btn-primary btn-sm float-end">Add <i className="fa fa-add"></i></button>
+                </Link>
                 {
                     this.props.posts.map(post => <PostCard key={post.id} post={post} remove={this.remove.bind(this)} />)
                 }
