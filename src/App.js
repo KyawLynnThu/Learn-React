@@ -19,10 +19,14 @@ function App() {
     localStorage.setItem(DB_NAME, JSON.stringify(posts));
   }, [posts]);
 
+  const postDeleteHandler = (id) => {
+    setPosts(posts.filter(post => post.id !== id))
+  }
+
   return (
     <div className="container">
       <h1 className="text-center text-info my-3">Posts</h1>
-      <Post posts={posts} />
+      <Post posts={posts} removePost={postDeleteHandler} />
       <AddPost addPost={addnewPost} />
     </div>
   )

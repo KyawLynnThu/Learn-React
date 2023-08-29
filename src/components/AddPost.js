@@ -4,8 +4,7 @@ import { v4 as uuid } from 'uuid';
 class AddPost extends Component{
     state = {
         title:"",
-        desc:"",
-
+        desc:""
     }
 
     addUser = (e) => {
